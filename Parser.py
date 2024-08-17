@@ -1,5 +1,4 @@
 import sys
-from os.path import split
 
 A_INSTRUCTION = 'A_INSTRUCTION'
 C_INSTRUCTION = 'C_INSTRUCTION'
