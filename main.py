@@ -17,4 +17,6 @@ if __name__ == '__main__':
         print(f'{parser.current_instruction}: {parser.instruction_type()}')
         if instruction_type == A_INSTRUCTION or instruction_type == L_INSTRUCTION:
             print(f'Symbol: {parser.symbol()}')
+        if instruction_type == C_INSTRUCTION:
+            print(f'DEST = {parser.dest()}, COMP = {parser.comp()}, JUMP = {parser.jump()}')
         print()

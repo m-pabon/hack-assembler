@@ -1,4 +1,5 @@
 import sys
+from os.path import split
 
 A_INSTRUCTION = 'A_INSTRUCTION'
 C_INSTRUCTION = 'C_INSTRUCTION'
@@ -55,3 +56,27 @@ class Parser:
             return self.current_instruction[1:]
         else:
             return self.current_instruction[1:len(self.current_instruction)-1]
+
+    def dest(self):
+        if '=' not in self.current_instruction:
+            return ''
+        split_instruction = self.current_instruction.split('=')
+        return split_instruction[0]
+
+    def comp(self):
+        if '=' not in self.current_instruction:
+            split_instruction = self.current_instruction.split(';')
+            return split_instruction[0]
+        elif ';' not in self.current_instruction:
+            split_instruction = self.current_instruction.split('=')
+            return split_instruction[1]
+        else:
+            split_instruction = self.current_instruction.split(';')
+            second_split = split_instruction[0].split('=')
+            return second_split[1]
+
+    def jump(self):
+        if ';' not in self.current_instruction:
+            return ''
+        split_instruction = self.current_instruction.split(';')
+        return split_instruction[1]
